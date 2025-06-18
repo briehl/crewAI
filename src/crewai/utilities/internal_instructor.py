@@ -38,6 +38,6 @@ class InternalInstructor:
     def to_pydantic(self):
         messages = [{"role": "user", "content": self.content}]
         model = self._client.chat.completions.create(
-            model=self.llm.model, response_model=self.model, messages=messages
+            model=self.llm.model, response_model=self.model, messages=messages, base_url=self.llm.base_url, api_key=self.llm.api_key
         )
         return model
